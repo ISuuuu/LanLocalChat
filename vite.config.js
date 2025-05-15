@@ -5,6 +5,10 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const serverUrl = `http://${process.env.PUBLIC_HOST}:${process.env.SERVER_PORT}`
+// 从 .env 读取允许的域名（默认包含 'file.369900.xyz'）
+const allowedHosts = process.env.VITE_ALLOWED_HOSTS
+  ? process.env.VITE_ALLOWED_HOSTS.split(',')
+  : ['file.ada.xyz'] // 默认值
 
 export default defineConfig({
   plugins: [vue()],
@@ -36,6 +40,7 @@ export default defineConfig({
       '/uploads': {
         target: serverUrl
       }
-    }
+    },
+    allowedHosts, // 动态设置允许的域名
   }
 }) 

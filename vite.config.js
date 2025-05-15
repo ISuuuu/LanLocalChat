@@ -4,7 +4,9 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-const serverUrl = `http://${process.env.PUBLIC_HOST}:${process.env.SERVER_PORT}`
+// 根据环境决定使用HTTP还是HTTPS
+const protocol = process.env.VITE_USE_HTTPS === 'true' ? 'https' : 'http'
+const serverUrl = `${protocol}://${process.env.PUBLIC_HOST}:${process.env.SERVER_PORT}`
 // 从 .env 读取允许的域名（默认包含 'file.369900.xyz'）
 const allowedHosts = process.env.VITE_ALLOWED_HOSTS
   ? process.env.VITE_ALLOWED_HOSTS.split(',')
@@ -43,4 +45,4 @@ export default defineConfig({
     },
     allowedHosts, // 动态设置允许的域名
   }
-}) 
+})

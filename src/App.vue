@@ -141,7 +141,7 @@ export default {
       onlineUsers: [],
       showNameForm: false,
       isDarkTheme: true,
-      currentLocale: 'zh_tw',
+      currentLocale: 'zh_cn',
       localeData: {
         chat: {
           placeholder: '輸入消息...',

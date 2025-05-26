@@ -33,6 +33,13 @@ services:
         - UPLOADS_RETENTION=${UPLOADS_RETENTION:-1d}
     volumes:
       - uploads:/app/server/uploads
+    networks:
+      - 1panel-network      
 
 volumes:
   uploads: 
+
+# false: compose会自动创建一个网络
+networks:
+  1panel-network: 
+    external: true
